@@ -1,6 +1,7 @@
 import Optim
 import Printf: @printf
 import Random: shuffle!, randperm
+import DataStructures: Stack
 
 const maxdegree = 2
 const actualMaxsize = maxsize + maxdegree
@@ -232,6 +233,17 @@ function countConstants(tree::Node)::Integer
     end
 end
 
+# Count the number of constants and variables in an equation
+function countVariablesAndConstants(tree::Node)::Integer
+    if tree.degree == 0
+        return 1
+    elseif tree.degree == 1
+        return 0 + countConstants(tree.l)
+    else
+        return 0 + countConstants(tree.l) + countConstants(tree.r)
+    end
+end
+
 # Randomly perturb a constant
 function mutateConstant(
         tree::Node, T::Float32,
@@ -267,6 +279,81 @@ end
 # Evaluate an equation over an array of datapoints
 function evalTreeArray(tree::Node)::Union{Array{Float32, 1}, Nothing}
     return evalTreeArray(tree, X)
+end
+
+# Get pointer to node (to prevent reallocation)
+function ptr(x::Node)::Ptr{Node}
+    return pointer_from_objref(x)
+end
+
+# Get reference to node (to prevent reallocation)
+function star(x::Ptr{Node})
+    return unsafe_pointer_to_objref(x)
+end
+
+function evalTreeArrayStack(head::Node, cX::Array{Float32, 2})::Union{Array{Float32, 1}, Nothing}
+    stack = Stack{Ptr{Node}}()
+    clen = size(cX)[1]
+    size_datastack = 1 + countBinaryOperators(head)
+    #Allocate memory in advance:
+    datastack = Array{Float32}(undef, clen, size_datastack)
+    # datastack = Stack{Array{Float32, 1}}()
+    data_idx = 0
+    head_ptr = ptr(head)
+    push!(stack, head_ptr)
+    while !isempty(stack)
+        cur = star(first(stack))
+        # Head refers to who pushed to datastack last.
+        if cur.degree == 0
+            if cur.constant
+                data_idx += 1
+                @inbounds @simd for i=1:clen
+                    datastack[i, data_idx] = cur.val
+                end
+                # push!(datastack, fill(cur.val, clen))
+            else
+                data_idx += 1
+                @inbounds @simd for i=1:clen
+                    datastack[i, data_idx] = cX[i, cur.val]
+                end
+                # push!(datastack, copy(cX[:, cur.val]))
+            end
+            head_ptr = pop!(stack)
+        elseif cur.degree == 1
+            completedSubtree = ptr(cur.l) == head_ptr
+            if completedSubtree
+                op_idx = cur.op
+                UNAOPS!(datastack, data_idx, op_idx, clen)
+                # Check for NaNs
+                @inbounds for i=1:clen
+                    if isinf(datastack[i, data_idx]) || isnan(datastack[i, data_idx])
+                        return nothing
+                    end
+                end
+                head_ptr = pop!(stack)
+            else
+                push!(stack, ptr(cur.l))
+            end
+        elseif cur.degree == 2
+            completedSubtree = ptr(cur.r) == head_ptr
+            if completedSubtree
+                op_idx = cur.op
+                data_idx -= 1
+                BINOPS!(datastack, data_idx, op_idx, clen)
+                # Check for NaNs
+                @inbounds for i=1:clen
+                    if isinf(datastack[i, data_idx]) || isnan(datastack[i, data_idx])
+                        return nothing
+                    end
+                end
+                head_ptr = pop!(stack)
+            else
+                push!(stack, ptr(cur.r)) #Process right subtree last (top of datastack)
+                push!(stack, ptr(cur.l)) #Process left subtree first (2nd in datastack)
+            end
+        end
+    end
+    return datastack[:, 1]
 end
 
 
