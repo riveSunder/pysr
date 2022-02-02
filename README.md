@@ -1,9 +1,9 @@
 [//]: # (Logo:)
 
 
-**PySR: parallel symbolic regression built on Julia, and interfaced by Python.**
+# PySR: High-Performance Symbolic Regression in Python
 
-Uses regularized evolution, simulated annealing, and gradient-free optimization.
+PySR is built on an extremely optimized pure-Julia backend, and uses regularized evolution, simulated annealing, and gradient-free optimization to search for equations that fit your data.
 
 | **Docs** | **pip** |
 |---|---|
