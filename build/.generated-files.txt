@@ -3,5 +3,5 @@ md5 5c2ff6f5dc134a1c56b24610ac118858 content/docs/getting-started.md
 md5 350e2ff8f86e9cdf1df8e1b5f0f21943 content/docs/options.md
 md5 5b8fc2369212c2c908407a8039b4d561 content/docs/operators.md
 md5 44939e2616f91a30955d118f55a1f3e1 content/docs/examples.md
-md5 e60fd9833304c3d261392e2edac67241 content/docs/api.md
+md5 d4a6031213098185ce51e953ad09ef4f content/docs/api.md
 md5 316fbd10196fed5607a1a66dbc3ec662 config.toml
