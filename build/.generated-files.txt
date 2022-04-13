@@ -1,7 +1,7 @@
-md5 2b85891640d79fb2639d7c38a88c4299 content/_index.md
+md5 ae49bc706075b865ff4485d812c20007 content/_index.md
 md5 5c2ff6f5dc134a1c56b24610ac118858 content/docs/getting-started.md
 md5 9a560c35b9de68fa622d1b7ffc699f49 content/docs/options.md
 md5 5b8fc2369212c2c908407a8039b4d561 content/docs/operators.md
 md5 96e975e08907dde177b2f4ee673d0dcf content/docs/examples.md
-md5 7cd88e31d6b5e80b3d35bd8af66e4640 content/docs/api.md
+md5 605a8772c28576913e15fbf6d444f94d content/docs/api.md
 md5 316fbd10196fed5607a1a66dbc3ec662 config.toml
