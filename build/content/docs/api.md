@@ -7,7 +7,7 @@ title: API
 
 # pysr.sr
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L1)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L1)
 
 <a id="pysr.sr.install"></a>
 
@@ -17,7 +17,7 @@ title: API
 def install(julia_project=None, quiet=False)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L23)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L23)
 
 Install PyCall.jl and all required dependencies for SymbolicRegression.jl.
 
@@ -31,7 +31,7 @@ Also updates the local Julia registry.
 class PySRRegressor(BaseEstimator,  RegressorMixin)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L353)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L353)
 
 <a id="pysr.sr.PySRRegressor.__init__"></a>
 
@@ -41,7 +41,7 @@ class PySRRegressor(BaseEstimator,  RegressorMixin)
 def __init__(model_selection="best", *, weights=None, binary_operators=None, unary_operators=None, procs=cpu_count(), loss="L2DistLoss()", populations=100, niterations=4, ncyclesperiteration=100, timeout_in_seconds=None, alpha=0.1, annealing=False, fractionReplaced=0.01, fractionReplacedHof=0.005, npop=100, parsimony=1e-4, migration=True, hofMigration=True, shouldOptimizeConstants=True, topn=10, weightAddNode=1, weightInsertNode=3, weightDeleteNode=3, weightDoNothing=1, weightMutateConstant=10, weightMutateOperator=1, weightRandomize=1, weightSimplify=0.002, crossoverProbability=0.01, perturbationFactor=1.0, extra_sympy_mappings=None, extra_torch_mappings=None, extra_jax_mappings=None, equation_file=None, verbosity=1e9, update_verbosity=None, progress=None, maxsize=20, fast_cycle=False, maxdepth=None, variable_names=None, batching=False, batchSize=50, select_k_features=None, warmupMaxsizeBy=0.0, constraints=None, useFrequency=True, tempdir=None, delete_tempfiles=True, julia_project=None, update=True, temp_equation_file=False, output_jax_format=False, output_torch_format=False, optimizer_algorithm="BFGS", optimizer_nrestarts=3, optimize_probability=1.0, optimizer_iterations=10, tournament_selection_n=10, tournament_selection_p=1.0, denoise=False, Xresampled=None, precision=32, multithreading=None, use_symbolic_utils=False, skip_mutation_failures=True)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L354)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L354)
 
 Initialize settings for an equation search in PySR.
 
@@ -123,7 +123,7 @@ Initialized model. Call `.fit(X, y)` to fit your data!
 def __repr__()
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L713)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L713)
 
 Prints all current equations fitted by the model.
 
@@ -138,7 +138,7 @@ The string `>>>>` denotes which equation is selected by the
 def set_params(**params)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L764)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L764)
 
 Set parameters for equation search.
 
@@ -150,7 +150,7 @@ Set parameters for equation search.
 def get_params(deep=True)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L774)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L774)
 
 Get parameters for equation search.
 
@@ -162,7 +162,7 @@ Get parameters for equation search.
 def get_best()
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L782)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L782)
 
 Get best equation using `model_selection`.
 
@@ -174,7 +174,7 @@ Get best equation using `model_selection`.
 def fit(X, y, weights=None, variable_names=None)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L799)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L799)
 
 Search for equations to fit the dataset and store them in `self.equations`.
 
@@ -194,7 +194,7 @@ You can also pass a pandas DataFrame for X.
 def predict(X)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L829)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L829)
 
 Predict y from input X using the equation chosen by `model_selection`.
 
@@ -217,7 +217,7 @@ columns as the training data.
 def sympy()
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L845)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L845)
 
 Return sympy representation of the equation(s) chosen by `model_selection`.
 
@@ -229,7 +229,7 @@ Return sympy representation of the equation(s) chosen by `model_selection`.
 def latex()
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L853)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L853)
 
 Return latex representation of the equation(s) chosen by `model_selection`.
 
@@ -241,7 +241,7 @@ Return latex representation of the equation(s) chosen by `model_selection`.
 def jax()
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L861)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L861)
 
 Return jax representation of the equation(s) chosen by `model_selection`.
 
@@ -257,7 +257,7 @@ func(X, params). This function is differentiable using `jax.grad`.
 def pytorch()
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/aed2b32201688b2057bfd2c37a33c135f3843480/pysr/sr.py#L881)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/28652ba40ecb3814844b721f6c5669a2d812728d/pysr/sr.py#L881)
 
 Return pytorch representation of the equation(s) chosen by `model_selection`.
 
