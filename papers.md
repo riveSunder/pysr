@@ -88,6 +88,30 @@ please submit a pull request to add your paper to [this file](https://github.com
 
 <!-- Text column: -->
 <div class="text_column"><div class="center">
+<a href="https://arxiv.org/abs/2202.02435">(Thesis) On Neural Differential Equations - Section 6.1</a><br>Patrick Kidger <sup>1</sup><br><small><sup>1</sup>University of Oxford</small><br>
+
+
+**Abstract:** The conjoining of dynamical systems and deep learning has become a topic of great interest. In particular, neural differential equations (NDEs) demonstrate that neural networks and differential equation are two sides of the same coin. Traditional parameterised differential equations are a special case. Many popular neural network architectures, such as residual networks and recurrent networks, are discretisations. NDEs are suitable for tackling generative problems, dynamical systems, and time series (particularly in physics, finance, ...) and are thus of interest to both modern machine learning and traditional mathematical modelling. NDEs offer high-capacity function approximation, strong priors on model space, the ability to handle irregular data, memory efficiency, and a wealth of available theory on both sides. This doctoral thesis provides an in-depth survey of the field. Topics include: neural ordinary differential equations (e.g. for hybrid neural/mechanistic modelling of physical systems); neural controlled differential equations (e.g. for learning functions of irregular time series); and neural stochastic differential equations (e.g. to produce generative models capable of representing complex stochastic dynamics, or sampling from complex high-dimensional distributions). Further topics include: numerical methods for NDEs (e.g. reversible differential equations solvers, backpropagation through differential equations, Brownian reconstruction); symbolic regression for dynamical systems (e.g. via regularised evolution); and deep implicit models (e.g. deep equilibrium models, differentiable optimisation). We anticipate this thesis will be of interest to anyone interested in the marriage of deep learning with dynamical systems, and hope it will provide a useful reference for the current state of the art.
+
+
+</div></div>
+
+
+<!-- Image column: -->
+<div class="image_column">
+
+[![](images/kidger_thesis.png)](https://arxiv.org/abs/2202.02435)
+
+
+</div>
+
+
+</div>
+<div class="row">
+
+
+<!-- Text column: -->
+<div class="text_column"><div class="center">
 <a href="https://arxiv.org/abs/2111.02422v1">Modeling the galaxy-halo connection with machine learning</a><br>Ana Maria Delgado <sup>1</sup>, Digvijay Wadekar <sup>2,3</sup>, Boryana Hadzhiyska <sup>1</sup>, Sownak Bose <sup>1,7</sup>, Lars Hernquist <sup>1</sup>, Shirley Ho <sup>2,4,5,6</sup><br><small><sup>1</sup>Center for Astrophysics | Harvard & Smithsonian, <sup>2</sup>New York University, <sup>3</sup>Institute for Advanced Study, <sup>4</sup>Flatiron Institute, <sup>5</sup>Princeton University, <sup>6</sup>Carnegie Mellon University, <sup>7</sup>Durham University</small><br>
 
 
