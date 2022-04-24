@@ -364,6 +364,7 @@ class PySRRegressor(BaseEstimator, RegressorMixin):
         niterations=4,
         ncyclesperiteration=100,
         timeout_in_seconds=None,
+        early_stop_condition=None,
         alpha=0.1,
         annealing=False,
         fractionReplaced=0.01,
@@ -459,6 +460,13 @@ class PySRRegressor(BaseEstimator, RegressorMixin):
         :type ncyclesperiteration: int
         :param timeout_in_seconds: Make the search return early once this many seconds have passed.
         :type timeout_in_seconds: float/int
+        :param early_stop_condition: If a float is passed, this will specify whether
+            to stop early if the mean loss gets below this value.
+            If a function is passed, that will be used instead.
+            The function must be a string of Julia code a function taking
+            (loss, complexity) as arguments and returning true or false.
+            For example, `"(loss, complexity) -> loss < 0.1"`.
+        :type early_stop_condition: float/str
         :param alpha: Initial temperature.
         :type alpha: float
         :param annealing: Whether to use annealing. You should (and it is default).
@@ -625,6 +633,7 @@ class PySRRegressor(BaseEstimator, RegressorMixin):
                 niterations=niterations,
                 ncyclesperiteration=ncyclesperiteration,
                 timeout_in_seconds=timeout_in_seconds,
+                early_stop_condition=early_stop_condition,
                 alpha=alpha,
                 annealing=annealing,
                 fractionReplaced=fractionReplaced,
@@ -1091,6 +1100,11 @@ class PySRRegressor(BaseEstimator, RegressorMixin):
             float(weightDoNothing),
         ]
 
+        early_stop_condition = self.params["early_stop_condition"]
+        if isinstance(early_stop_condition, str):
+            early_stop_condition = Main.eval(early_stop_condition)
+
+
         params_to_hash = {
             **{k: self.__getattribute__(k) for k in self.surface_parameters},
             **self.params,
@@ -1165,6 +1179,7 @@ class PySRRegressor(BaseEstimator, RegressorMixin):
             use_symbolic_utils=self.params["use_symbolic_utils"],
             progress=self.params["progress"],
             timeout_in_seconds=self.params["timeout_in_seconds"],
+            earlyStopCondition=early_stop_condition,
             crossoverProbability=self.params["crossoverProbability"],
             skip_mutation_failures=self.params["skip_mutation_failures"],
         )

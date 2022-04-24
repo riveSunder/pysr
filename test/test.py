@@ -17,6 +17,7 @@ class TestPipeline(unittest.TestCase):
             npop=100,
             annealing=True,
             useFrequency=False,
+            early_stop_condition=1e-6,
         )
         np.random.seed(0)
         self.X = np.random.randn(100, 5)
