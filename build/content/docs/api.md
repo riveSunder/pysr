@@ -7,7 +7,7 @@ title: API
 
 # pysr.sr
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L1)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L1)
 
 <a id="pysr.sr.install"></a>
 
@@ -17,7 +17,7 @@ title: API
 def install(julia_project=None, quiet=False)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L21)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L22)
 
 Install PyCall.jl and all required dependencies for SymbolicRegression.jl.
 
@@ -31,17 +31,17 @@ Also updates the local Julia registry.
 class PySRRegressor(BaseEstimator,  RegressorMixin)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L343)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L344)
 
 <a id="pysr.sr.PySRRegressor.__init__"></a>
 
 #### \_\_init\_\_
 
 ```python
-def __init__(model_selection="best", *, weights=None, binary_operators=None, unary_operators=None, procs=cpu_count(), loss="L2DistLoss()", populations=15, niterations=40, ncyclesperiteration=550, timeout_in_seconds=None, alpha=0.1, annealing=False, fractionReplaced=0.000364, fractionReplacedHof=0.035, npop=33, parsimony=0.0032, migration=True, hofMigration=True, shouldOptimizeConstants=True, topn=12, weightAddNode=0.79, weightDeleteNode=1.7, weightDoNothing=0.21, weightInsertNode=5.1, weightMutateConstant=0.048, weightMutateOperator=0.47, weightRandomize=0.00023, weightSimplify=0.0020, crossoverProbability=0.066, perturbationFactor=0.076, extra_sympy_mappings=None, extra_torch_mappings=None, extra_jax_mappings=None, equation_file=None, verbosity=1e9, update_verbosity=None, progress=None, maxsize=20, fast_cycle=False, maxdepth=None, variable_names=None, batching=False, batchSize=50, select_k_features=None, warmupMaxsizeBy=0.0, constraints=None, useFrequency=True, useFrequencyInTournament=True, tempdir=None, delete_tempfiles=True, julia_project=None, update=True, temp_equation_file=False, output_jax_format=False, output_torch_format=False, optimizer_algorithm="BFGS", optimizer_nrestarts=2, optimize_probability=0.14, optimizer_iterations=8, tournament_selection_n=10, tournament_selection_p=0.86, denoise=False, Xresampled=None, precision=32, multithreading=None, use_symbolic_utils=False, skip_mutation_failures=True)
+def __init__(model_selection="best", *, weights=None, binary_operators=None, unary_operators=None, procs=cpu_count(), loss="L2DistLoss()", populations=15, niterations=40, ncyclesperiteration=550, timeout_in_seconds=None, alpha=0.1, annealing=False, fraction_replaced=0.000364, fraction_replaced_hof=0.035, population_size=33, parsimony=0.0032, migration=True, hof_migration=True, should_optimize_constants=True, topn=12, weight_add_node=0.79, weight_delete_node=1.7, weight_do_nothing=0.21, weight_insert_node=5.1, weight_mutate_constant=0.048, weight_mutate_operator=0.47, weight_randomize=0.00023, weight_simplify=0.0020, crossover_probability=0.066, perturbation_factor=0.076, extra_sympy_mappings=None, extra_torch_mappings=None, extra_jax_mappings=None, equation_file=None, verbosity=1e9, update_verbosity=None, progress=None, maxsize=20, fast_cycle=False, maxdepth=None, variable_names=None, batching=False, batch_size=50, select_k_features=None, warmup_maxsize_by=0.0, constraints=None, use_frequency=True, use_frequency_in_tournament=True, tempdir=None, delete_tempfiles=True, julia_project=None, update=True, temp_equation_file=False, output_jax_format=False, output_torch_format=False, optimizer_algorithm="BFGS", optimizer_nrestarts=2, optimize_probability=0.14, optimizer_iterations=8, tournament_selection_n=10, tournament_selection_p=0.86, denoise=False, Xresampled=None, precision=32, multithreading=None, use_symbolic_utils=False, skip_mutation_failures=True, **kwargs, ,)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L344)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L345)
 
 Initialize settings for an equation search in PySR.
 
@@ -64,30 +64,30 @@ You can view more detailed explanations of the options on the
 - `procs` (`int`): Number of processes (=number of populations running).
 - `multithreading` (`bool`): Use multithreading instead of distributed backend. Default is yes. Using procs=0 will turn off both.
 - `batching` (`bool`): whether to compare population members on small batches during evolution. Still uses full dataset for comparing against hall of fame.
-- `batchSize` (`int`): the amount of data to use if doing batching.
+- `batch_size` (`int`): the amount of data to use if doing batching.
 - `maxsize` (`int`): Max size of an equation.
 - `ncyclesperiteration` (`int`): Number of total mutations to run, per 10 samples of the population, per iteration.
 - `timeout_in_seconds` (`float/int`): Make the search return early once this many seconds have passed.
 - `alpha` (`float`): Initial temperature.
 - `annealing` (`bool`): Whether to use annealing. You should (and it is default).
-- `fractionReplaced` (`float`): How much of population to replace with migrating equations from other populations.
-- `fractionReplacedHof` (`float`): How much of population to replace with migrating equations from hall of fame.
-- `npop` (`int`): Number of individuals in each population
+- `fraction_replaced` (`float`): How much of population to replace with migrating equations from other populations.
+- `fraction_replaced_hof` (`float`): How much of population to replace with migrating equations from hall of fame.
+- `population_size` (`int`): Number of individuals in each population
 - `parsimony` (`float`): Multiplicative factor for how much to punish complexity.
 - `migration` (`bool`): Whether to migrate.
-- `hofMigration` (`bool`): Whether to have the hall of fame migrate.
-- `shouldOptimizeConstants` (`bool`): Whether to numerically optimize constants (Nelder-Mead/Newton) at the end of each iteration.
+- `hof_migration` (`bool`): Whether to have the hall of fame migrate.
+- `should_optimize_constants` (`bool`): Whether to numerically optimize constants (Nelder-Mead/Newton) at the end of each iteration.
 - `topn` (`int`): How many top individuals migrate from each population.
-- `perturbationFactor` (`float`): Constants are perturbed by a max factor of (perturbationFactor*T + 1). Either multiplied by this or divided by this.
-- `weightAddNode` (`float`): Relative likelihood for mutation to add a node
-- `weightInsertNode` (`float`): Relative likelihood for mutation to insert a node
-- `weightDeleteNode` (`float`): Relative likelihood for mutation to delete a node
-- `weightDoNothing` (`float`): Relative likelihood for mutation to leave the individual
-- `weightMutateConstant` (`float`): Relative likelihood for mutation to change the constant slightly in a random direction.
-- `weightMutateOperator` (`float`): Relative likelihood for mutation to swap an operator.
-- `weightRandomize` (`float`): Relative likelihood for mutation to completely delete and then randomly generate the equation
-- `weightSimplify` (`float`): Relative likelihood for mutation to simplify constant parts by evaluation
-- `crossoverProbability` (`float`): Absolute probability of crossover-type genetic operation, instead of a mutation.
+- `perturbation_factor` (`float`): Constants are perturbed by a max factor of (perturbation_factor*T + 1). Either multiplied by this or divided by this.
+- `weight_add_node` (`float`): Relative likelihood for mutation to add a node
+- `weight_insert_node` (`float`): Relative likelihood for mutation to insert a node
+- `weight_delete_node` (`float`): Relative likelihood for mutation to delete a node
+- `weight_do_nothing` (`float`): Relative likelihood for mutation to leave the individual
+- `weight_mutate_constant` (`float`): Relative likelihood for mutation to change the constant slightly in a random direction.
+- `weight_mutate_operator` (`float`): Relative likelihood for mutation to swap an operator.
+- `weight_randomize` (`float`): Relative likelihood for mutation to completely delete and then randomly generate the equation
+- `weight_simplify` (`float`): Relative likelihood for mutation to simplify constant parts by evaluation
+- `crossover_probability` (`float`): Absolute probability of crossover-type genetic operation, instead of a mutation.
 - `equation_file` (`str`): Where to save the files (.csv separated by |)
 - `verbosity` (`int`): What verbosity level to use. 0 means minimal print statements.
 - `update_verbosity` (`int`): What verbosity level to use for package updates. Will take value of `verbosity` if not given.
@@ -95,10 +95,10 @@ You can view more detailed explanations of the options on the
 - `maxdepth` (`int`): Max depth of an equation. You can use both maxsize and maxdepth.  maxdepth is by default set to = maxsize, which means that it is redundant.
 - `fast_cycle` (`bool`): (experimental) - batch over population subsamples. This is a slightly different algorithm than regularized evolution, but does cycles 15% faster. May be algorithmically less efficient.
 - `variable_names` (`list`): a list of names for the variables, other than "x0", "x1", etc.
-- `warmupMaxsizeBy` (`float`): whether to slowly increase max size from a small number up to the maxsize (if greater than 0).  If greater than 0, says the fraction of training time at which the current maxsize will reach the user-passed maxsize.
+- `warmup_maxsize_by` (`float`): whether to slowly increase max size from a small number up to the maxsize (if greater than 0).  If greater than 0, says the fraction of training time at which the current maxsize will reach the user-passed maxsize.
 - `constraints` (`dict`): dictionary of int (unary) or 2-tuples (binary), this enforces maxsize constraints on the individual arguments of operators. E.g., `'pow': (-1, 1)` says that power laws can have any complexity left argument, but only 1 complexity exponent. Use this to force more interpretable solutions.
-- `useFrequency` (`bool`): whether to measure the frequency of complexities, and use that instead of parsimony to explore equation space. Will naturally find equations of all complexities.
-- `useFrequencyInTournament` (`bool`): whether to use the frequency mentioned above in the tournament, rather than just the simulated annealing.
+- `use_frequency` (`bool`): whether to measure the frequency of complexities, and use that instead of parsimony to explore equation space. Will naturally find equations of all complexities.
+- `use_frequency_in_tournament` (`bool`): whether to use the frequency mentioned above in the tournament, rather than just the simulated annealing.
 - `tempdir` (`str/None`): directory for the temporary files
 - `delete_tempfiles` (`bool`): whether to delete the temporary files after finishing
 - `julia_project` (`str/None`): a Julia environment location containing a Project.toml (and potentially the source code for SymbolicRegression.jl).  Default gives the Python package directory, where a Project.toml file should be present from the install.
@@ -111,6 +111,8 @@ You can view more detailed explanations of the options on the
 - `precision` (`int`): What precision to use for the data. By default this is 32 (float32), but you can select 64 or 16 as well.
 - `use_symbolic_utils` (`bool`): Whether to use SymbolicUtils during simplification.
 - `skip_mutation_failures` (`bool`): Whether to skip mutation and crossover failures, rather than simply re-sampling the current member.
+- `kwargs` (`dict`): Supports deprecated keyword arguments. Other arguments will result
+in an error
 
 **Returns**:
 
@@ -124,7 +126,7 @@ Initialized model. Call `.fit(X, y)` to fit your data!
 def __repr__()
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L707)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L764)
 
 Prints all current equations fitted by the model.
 
@@ -139,7 +141,7 @@ The string `>>>>` denotes which equation is selected by the
 def set_params(**params)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L758)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L815)
 
 Set parameters for equation search.
 
@@ -151,7 +153,7 @@ Set parameters for equation search.
 def get_params(deep=True)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L770)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L827)
 
 Get parameters for equation search.
 
@@ -163,7 +165,7 @@ Get parameters for equation search.
 def get_best(index=None)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L778)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L835)
 
 Get best equation using `model_selection`.
 
@@ -185,7 +187,7 @@ Dictionary representing the best expression found.
 def fit(X, y, weights=None, variable_names=None)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L810)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L867)
 
 Search for equations to fit the dataset and store them in `self.equations`.
 
@@ -205,7 +207,7 @@ You can also pass a pandas DataFrame for X.
 def predict(X, index=None)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L840)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L897)
 
 Predict y from input X using the equation chosen by `model_selection`.
 
@@ -231,7 +233,7 @@ an expression using a particular row of
 def sympy(index=None)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L861)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L918)
 
 Return sympy representation of the equation(s) chosen by `model_selection`.
 
@@ -253,7 +255,7 @@ SymPy representation of the best expression.
 def latex(index=None)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L876)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L933)
 
 Return latex representation of the equation(s) chosen by `model_selection`.
 
@@ -275,7 +277,7 @@ LaTeX expression as a string
 def jax(index=None)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L892)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L949)
 
 Return jax representation of the equation(s) chosen by `model_selection`.
 
@@ -302,7 +304,7 @@ and jax array of parameters as "parameters" key.
 def pytorch(index=None)
 ```
 
-[[view_source]](https://github.com/MilesCranmer/PySR/blob/913bf09771872d7d31eab3c6de852ad90c331d9f/pysr/sr.py#L920)
+[[view_source]](https://github.com/MilesCranmer/PySR/blob/1443fba185b347dd55dfcd613ac7c6afa2b9cf92/pysr/sr.py#L977)
 
 Return pytorch representation of the equation(s) chosen by `model_selection`.
 
