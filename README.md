@@ -86,7 +86,7 @@ PySR's main interface is in the style of scikit-learn:
 ```python
 from pysr import PySRRegressor
 model = PySRRegressor(
-    niterations=5,
+    niterations=40,
     binary_operators=["+", "*"],
     unary_operators=[
         "cos",
